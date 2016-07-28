@@ -1,4 +1,5 @@
 class Song
+  extend Concerns::Findable
 
   attr_accessor :name
   attr_reader :artist, :genre
@@ -45,17 +46,4 @@ class Song
     @genre = genre
   end
 
-  def Song.find_by_name(name)
-    @@all.each do |song|
-      return song if name == song.name
-    end
-    nil
-  end
-
-  def Song.find_or_create_by_name(name)
-    if Song.find_by_name(name)
-      return Song.find_by_name(name)
-    end
-    Song.create(name)
-  end
 end
