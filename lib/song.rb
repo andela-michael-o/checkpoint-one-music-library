@@ -3,6 +3,7 @@ class Song
 
   attr_accessor :name
   attr_reader :artist, :genre
+  attr_writer :name
   @@all = []
 
   def initialize(name, artist = nil, genre = nil)
@@ -33,7 +34,6 @@ class Song
 
   def artist=(artist)
     artist.add_song(self) if !artist.songs.include?(self)
-    #artist.songs << self if !artist.songs.include?(self)
     @artist ||= artist
   end
 
@@ -46,4 +46,17 @@ class Song
     @genre = genre
   end
 
+  def Song.new_from_filename(filename)
+    split_names = filename.split(" - ")
+    song = Song.find_or_create_by_name(split_names[1])
+    song.artist = Artist.find_or_create_by_name(split_names[0])
+    song.genre = Genre.find_or_create_by_name(split_names[2].slice(0...-4))
+    song
+  end
+
+  def Song.create_from_filename(file_name)
+    song = Song.new_from_filename(file_name)
+    song.save
+    song
+  end
 end
