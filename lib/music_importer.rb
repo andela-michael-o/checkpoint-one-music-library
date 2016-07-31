@@ -7,6 +7,7 @@ class MusicImporter
     @path = path
     @files = []
     self.load_files = path
+    self.import
   end
 
   def load_files=(path)
