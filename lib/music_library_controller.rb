@@ -7,10 +7,12 @@ class MusicLibraryController
   end
 
   def call
+    print "Select an option>> "
     option = ""
     while option != "exit"
       option = gets
       do_option(option)
+      print "Select an option>> "
     end
   end
 
@@ -25,6 +27,7 @@ class MusicLibraryController
       when "play song" then play_song
       when "list artist" then print_artist_name
       when "list genre" then print_genre
+      else puts "Unrecognised command. Please try again"
     end
   end
 
