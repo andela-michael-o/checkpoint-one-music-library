@@ -17,8 +17,12 @@ module Concerns
   end
 
   module HelperMethods
-    def print_out(text)
+    def print_with_newline(text)
       puts "#{text}"
+    end
+
+    def print_out(text)
+      print "#{text}"
     end
 
     def get_user_input

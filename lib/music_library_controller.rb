@@ -25,8 +25,8 @@ class MusicLibraryController
       when "list artists" then list_artists
       when "list genres" then list_genres
       when "play song" then play_song
-      when "list artist" then print_artist_name
-      when "list genre" then print_genre
+      when "list artist" then print_artist_song
+      when "list genre" then print_genres
     end
   end
 
@@ -34,45 +34,41 @@ class MusicLibraryController
     count = 0
     @music_importer.files.each do |file|
       count += 1
-      print_out "#{count}. #{self.remove_mp3_extension(file)}"
+      print_with_newline "#{count}. #{self.remove_mp3_extension(file)}"
     end
   end
 
   def list_artists
-    @music_importer.files.each do |file|
-      song = Song.create_from_filename(file)
-      print_out song.artist.name
+    Artist.all.each do |artist|
+      print_with_newline artist.name
     end
   end
 
   def list_genres
-    @music_importer.files.each do |file|
-      song = Song.create_from_filename(file)
-      print_out song.genre.name
+    Genre.all.each do |genre|
+      print_with_newline genre.name
     end
   end
 
   def play_song
-    print_out "Enter the song number like '1' or '23'"
+    print_out "Enter the song number like '1' or '23'>>"
     song_num = get_user_input.to_i
-    print_out "Playing " + self.remove_mp3_extension(@music_importer.files[song_num - 1])
+    print_with_newline "Playing " + self.remove_mp3_extension(@music_importer.files[song_num - 1])
   end
 
-  def print_artist_name
-    print_out "Enter the artist's name"
-    prompt_user
+  def print_artist_song
+    print_out "Enter the artist's name>>"
     artist_name = get_user_input
     @music_importer.files.each do |file|
-      print_out self.remove_mp3_extension(file) if file.include?(artist_name)
+      print_with_newline self.remove_mp3_extension(file) if file.include?(artist_name)
     end
   end
 
-  def print_genre
+  def print_genres
     print_out "Enter the genre name"
-    print_out ""
     genre_name = get_user_input
     @music_importer.files.each do |file|
-      print_out self.remove_mp3_extension(file) if file.include?(genre_name)
+      print_with_newline self.remove_mp3_extension(file) if file.include?(genre_name)
     end
   end
 
@@ -84,20 +80,18 @@ class MusicLibraryController
              "To see a list of songs from an artist type \"list artist\"\n" +
              "To see a list of genres from an artist type \"list genre\"\n" +
              "Type exit to exit the program."
-    print_out prompt
+    print_with_newline prompt
     prompt_user
   end
 
   def user_choice_is_valid?(user_choice)
     commands = ["list songs", "list artists", "list genres", "play song", "list artist", "list genre", "exit"]
-    if commands.include?(user_choice)
-      return true
-    end
-    print_out "You entered a wrong command"
+    return true if commands.include?(user_choice)
+    print_with_newline "You entered a wrong command"
     false
     end
 
     def prompt_user
-      print "\nEnter a command>>"
+      print "\nEnter a command>> "
     end
 end
