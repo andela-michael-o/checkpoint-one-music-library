@@ -10,11 +10,11 @@ class Genre
     @artist_collection = []
   end
 
-  def Genre.all
+  def self.all
     @@all
   end
 
-  def Genre.destroy_all
+  def self.destroy_all
     @@all = []
   end
 
@@ -22,7 +22,7 @@ class Genre
     @@all << self
   end
 
-  def Genre.create(name)
+  def self.create(name)
     genre = Genre.new(name)
     Genre.all << genre
     genre

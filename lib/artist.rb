@@ -9,11 +9,11 @@ class Artist
     @genre_collection = []
   end
 
-  def Artist.all
+  def self.all
     @@all
   end
 
-  def Artist.destroy_all
+  def self.destroy_all
     @@all = []
   end
 
@@ -21,15 +21,15 @@ class Artist
     @@all << self
   end
 
-  def Artist.create(name)
+  def self.create(name)
     artist = Artist.new(name)
-    Artist.all << artist
+    self.all << artist
     artist
   end
 
   def add_song(song)
     song.setArtist(self)
-    @songs << song if !@songs.include?(song)
+    @songs << song unless @songs.include?(song)
   end
 
   def add_genre(genre)
