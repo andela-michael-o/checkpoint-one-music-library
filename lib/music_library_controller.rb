@@ -34,7 +34,7 @@ class MusicLibraryController
     count = 0
     Song.all.each do |song|
       count += 1
-      print_with_newline "#{song.artist.name} - #{song.name} - #{song.genre.name}"
+      print_with_newline "#{count}. #{song.artist.name} - #{song.name} - #{song.genre.name}"
     end
   end
 
