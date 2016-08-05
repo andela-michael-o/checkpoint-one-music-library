@@ -102,7 +102,7 @@ EOT
     return true if commands.include?(user_choice)
     print_with_newline "You entered a wrong command"
     false
-    end
+  end
 
     def prompt_user
       print "\nEnter a command>> "
