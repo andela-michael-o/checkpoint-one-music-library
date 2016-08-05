@@ -74,7 +74,7 @@ class MusicLibraryController
     genre_name = get_user_input
     selected_songs = Song.all.select {|song| song.genre.name == genre_name}
     if selected_songs
-      results.each do |song|
+      selected_songs.each do |song|
         print_with_newline "#{song.artist.name} - #{song.name} - #{song.genre.name}"
       end
     end
