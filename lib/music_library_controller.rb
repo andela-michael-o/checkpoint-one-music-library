@@ -72,8 +72,8 @@ class MusicLibraryController
   def print_genres
     print_out "Enter the genre name>> "
     genre_name = get_user_input
-    results = Song.all.select {|song| song.genre.name == genre_name}
-    if results
+    selected_songs = Song.all.select {|song| song.genre.name == genre_name}
+    if selected_songs
       results.each do |song|
         print_with_newline "#{song.artist.name} - #{song.name} - #{song.genre.name}"
       end
