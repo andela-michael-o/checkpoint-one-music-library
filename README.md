@@ -40,8 +40,7 @@ You must have ruby installed on your computer for this application to work. Feel
   ```cd checkpoint-one-music-library```
 * Install the required gems by typing:
   ```bundle install```
-Once the installation is done you can run the application by typing
-```bin/musiclibrary```
+* Once the installation is done you can run the application by typing: ```bin/musiclibrary```
 
 ##TESTING
 If you are interested in running the tests you must make sure you have `rspec` gem installed, otherwise you can run ```gem install rspec``` to get it installed. Then you can just run ```rspec``` from the application's root folder while in console.
