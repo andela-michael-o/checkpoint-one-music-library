@@ -51,19 +51,24 @@ class MusicLibraryController
   end
 
   def play_song
-    print_out "Enter the song number like '1' or '23'>> "
+    print_out "Enter the song number between '1' and '99'>> "
     song_num = get_user_input.to_i
+    if song_num >= Song.all.size || song_num <= 0
+      print_with_newline "No song with this number"
+      return
+    end
     song = Song.all[song_num - 1]
-    output = "#{song.artist.name} - #{song.name} - #{song.genre.name}"
-    print_with_newline "Playing #{output}"
+    print_with_newline "Playing #{song.artist.name} - #{song.name} - #{song.genre.name}"
   end
 
   def print_artist_song
     print_out "Enter the artist's name>> "
-    artist_name = get_user_input
-    results = Song.all.select {|song| song.artist.name == artist_name}
-    if results
-      results.each do |song|
+    artist_name = get_user_input.downcase
+    songs = Song.all.select {|song| song.artist.name.downcase == artist_name}
+    if songs.size.zero?
+      print_with_newline "Unknown artist name"
+    else
+      songs.each do |song|
         print_with_newline "#{song.artist.name} - #{song.name} - #{song.genre.name}"
       end
     end
@@ -71,9 +76,11 @@ class MusicLibraryController
 
   def print_genres
     print_out "Enter the genre name>> "
-    genre_name = get_user_input
-    selected_genres = Genre.all.select {|genre| genre.name == genre_name}
-    if selected_genres
+    genre_name = get_user_input.downcase
+    selected_genres = Genre.all.select {|genre| genre.name.downcase == genre_name}
+    if selected_genres.size.zero?
+      print_with_newline "Unknown genre"
+    else
       selected_genres.each do |genre|
         genre.songs.each {|song| print_with_newline "#{song.artist.name} - #{song.name} - #{song.genre.name}"}
       end
