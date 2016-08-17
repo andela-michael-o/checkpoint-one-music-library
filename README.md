@@ -36,7 +36,7 @@ You must have ruby installed on your computer for this application to work. Feel
 ##GETTING STARTED
 * First clone the repository by typing the following line in your console:
   ```git clone git@github.com:andela-mogala/checkpoint-one-music-library.git```
-* Next type change directory by typing
+* Next change directory by typing
   ```cd checkpoint-one-music-library```
 * Install the required gems by typing:
   ```bundle install```
