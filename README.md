@@ -3,11 +3,7 @@
 [![Code Climate](https://codeclimate.com/github/andela-mogala/checkpoint-one-music-library/badges/gpa.svg)](https://codeclimate.com/github/andela-mogala/checkpoint-one-music-library) [![Test Coverage](https://codeclimate.com/github/andela-mogala/checkpoint-one-music-library/badges/coverage.svg)](https://codeclimate.com/github/andela-mogala/checkpoint-one-music-library/coverage) [![Issue Count](https://codeclimate.com/github/andela-mogala/checkpoint-one-music-library/badges/issue_count.svg)](https://codeclimate.com/github/andela-mogala/checkpoint-one-music-library)
 
 ##DESCRIPTION
-The Music Library application is a CLI built with Ruby. It manages music stored in any directory based on three criteria:
-  * Song
-  * Artist
-  * Genre
-The entry point to the application is the MusicLibraryController class which has a `call` method that starts up the command line.
+The Music Library application is a CLI built with Ruby. It manages music stored in any directory based on three criteria: `Song`, `Artist` and `Genre`. The entry point to the application is the MusicLibraryController class which has a `call` method that starts up the command line.
 
 ##FEATURES
 The application has the ability to:
