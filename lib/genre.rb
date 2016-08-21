@@ -1,6 +1,5 @@
-class Genre
-  extend Concerns::Findable
-  attr_accessor :name, :songs
+class Genre < MusicBase
+  attr_accessor :songs, :name
   attr_reader :artists
   @@all = []
 
@@ -8,24 +7,6 @@ class Genre
     @name = name
     @songs = []
     @artist_collection = []
-  end
-
-  def self.all
-    @@all
-  end
-
-  def self.destroy_all
-    @@all.clear
-  end
-
-  def save
-    @@all << self
-  end
-
-  def self.create(name)
-    genre = new(name)
-    Genre.all << genre
-    genre
   end
 
   def artists=(artist)

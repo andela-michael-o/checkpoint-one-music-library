@@ -1,5 +1,4 @@
-class Artist
-  extend Concerns::Findable
+class Artist < MusicBase
   attr_accessor :name, :songs
   @@all = []
 
@@ -9,26 +8,8 @@ class Artist
     @genre_collection = []
   end
 
-  def self.all
-    @@all
-  end
-
-  def self.destroy_all
-    @@all.clear
-  end
-
-  def save
-    @@all << self
-  end
-
-  def self.create(name)
-    artist = new(name)
-    self.all << artist
-    artist
-  end
-
   def add_song(song)
-    song.setArtist(self)
+    song.set_artist(self)
     @songs << song unless @songs.include?(song)
   end
 

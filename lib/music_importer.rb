@@ -1,24 +1,24 @@
 class MusicImporter
-
   attr_accessor :path
   attr_reader :files
 
-  def initialize(path='./db/mp3s')
+  def initialize(path = './db/mp3s')
     @path = path
     @files = []
-    self.load_files
-    self.import
+    import
   end
 
   def load_files
-    if File.exist?(@path) and File.directory? @path
-      Dir.foreach(@path) do |file|
-        @files << file if file.include?(".mp3")
+    if File.exist?(@path) && File.directory?(@path)
+      Dir.foreach @path do |file|
+        @files << file if file.include?('.mp3')
       end
     end
   end
 
   def import
-    @files.each { |file| Song.new_from_filename(file)}
+    load_files
+    @files.each { |file| Song.new_from_filename(file) }
   end
+
 end
