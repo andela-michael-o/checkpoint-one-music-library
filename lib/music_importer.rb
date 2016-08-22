@@ -20,5 +20,4 @@ class MusicImporter
     load_files
     @files.each { |file| Song.new_from_filename(file) }
   end
-
 end

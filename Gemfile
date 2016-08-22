@@ -7,3 +7,4 @@ gem 'rspec'
 gem 'pry'
 gem 'require_all'
 gem "codeclimate-test-reporter", group: :test, require: nil
+gem 'colorize'
