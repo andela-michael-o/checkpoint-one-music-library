@@ -1,7 +1,7 @@
 module Concerns
   module Findable
     def find_by_name(name)
-      all.detect { |one| one.name.downcase == name.downcase }
+      all.detect { |model| model.name.downcase == name.downcase }
     end
 
     def find_or_create_by_name(name)
