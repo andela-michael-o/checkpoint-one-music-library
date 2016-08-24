@@ -20,12 +20,13 @@ module Concerns
 
     def list_songs
       Song.all.each_with_index do |song, index|
-        puts "#{index + 1}. #{song.artist.name} - #{song.name} - #{song.genre.name}"
+        puts "\t#{index + 1}. #{song.artist.name} - #{song.name} "\
+        "- #{song.genre.name}"
       end
     end
 
     def list_artists
-      Artist.all.each { |artist| puts artist.name }
+      Artist.all.each { |artist| puts "\t" << artist.name }
     end
 
     def list_genres
@@ -40,7 +41,7 @@ module Concerns
         return
       end
       song = Song.all[song_num - 1]
-      puts "Playing #{song.artist.name} - #{song.name} - #{song.genre.name}"
+      puts "\tPlaying #{song.artist.name} - #{song.name} - #{song.genre.name}"
     end
 
     def list_artist
@@ -51,18 +52,18 @@ module Concerns
         puts 'Unknown artist name'.colorize(:red)
       else
         songs.each do |song|
-          puts "#{song.artist.name} - #{song.name} - #{song.genre.name}"
+          puts "\t#{song.artist.name} - #{song.name} - #{song.genre.name}"
         end
       end
     end
 
     def list_genre
-      print 'Enter the genre name >> '
+      print 'Enter the genre name >> '.colorize(:light_blue)
       genre_name = gets.chomp.downcase
       selected_genre = Genre.all.detect { |genre| genre.name.downcase == genre_name }
       if selected_genre
         selected_genre.songs.each do |song|
-          puts "#{song.artist.name} - #{song.name} - #{song.genre.name}"
+          puts "\t#{song.artist.name} - #{song.name} - #{song.genre.name}"
         end
       else
         puts 'Unknown genre'.colorize(:red)
