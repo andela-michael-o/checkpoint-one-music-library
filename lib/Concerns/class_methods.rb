@@ -8,6 +8,6 @@ module ClassMethods
   end
 
   def create(name)
-    new(name).tap { |instance| instance.save }
+    new(name).tap(&:save)
   end
 end
