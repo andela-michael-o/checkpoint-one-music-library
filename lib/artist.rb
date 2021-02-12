@@ -1,4 +1,6 @@
 class Artist
+  extend Concerns::ClassMethods
+
   attr_accessor :name
   @@all = []
 
@@ -8,19 +10,5 @@ class Artist
 
   def save
     self.class.class_variable_get(:@@all) << self
-  end
-
-  class << self
-    def all
-      class_variable_get(:@@all)
-    end
-
-    def destroy_all
-      class_variable_set(:@@all, [])
-    end
-
-    def create(*args)
-      new(*args).tap { |artist| artist.save }
-    end
   end
 end

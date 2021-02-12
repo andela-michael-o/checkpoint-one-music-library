@@ -9,7 +9,7 @@ module Concerns
     end
 
     def create(name)
-      new(name).save
+      new(name).tap { |instance| instance.save }
     end
   end
 end
