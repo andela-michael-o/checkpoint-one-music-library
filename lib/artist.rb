@@ -1,23 +1,26 @@
-class Artist < MusicBase
-  attr_accessor :name, :songs
+class Artist
+  attr_accessor :name
   @@all = []
 
   def initialize(name)
     @name = name
-    @songs = []
-    @genre_collection = []
   end
 
-  def add_song(song)
-    song.set_artist(self)
-    @songs << song unless @songs.include?(song)
+  def save
+    self.class.class_variable_get(:@@all) << self
   end
 
-  def add_genre(genre)
-    @genre_collection << genre unless @genre_collection.include?(genre)
-  end
+  class << self
+    def all
+      class_variable_get(:@@all)
+    end
 
-  def genres
-    @genre_collection
+    def destroy_all
+      class_variable_set(:@@all, [])
+    end
+
+    def create(*args)
+      new(*args).tap { |artist| artist.save }
+    end
   end
 end
