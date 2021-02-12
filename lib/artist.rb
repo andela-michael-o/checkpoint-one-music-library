@@ -1,14 +1,11 @@
 class Artist
-  extend Concerns::ClassMethods
+  extend ClassMethods
+  include Saveable
 
   attr_accessor :name
   @@all = []
 
   def initialize(name)
     @name = name
-  end
-
-  def save
-    self.class.class_variable_get(:@@all) << self
   end
 end
