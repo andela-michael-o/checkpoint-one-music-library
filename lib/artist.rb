@@ -14,4 +14,8 @@ class Artist
     @songs.push(song) unless @songs.include?(song)
     song.artist ||= self
   end
+
+  def genres
+    songs.map(&:genre).uniq
+  end
 end
