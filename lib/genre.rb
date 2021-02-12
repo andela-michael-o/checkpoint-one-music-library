@@ -1,5 +1,6 @@
 class Genre
   extend ClassMethods
+  extend Concerns::Findable
   include Saveable
 
   attr_accessor :name, :songs
