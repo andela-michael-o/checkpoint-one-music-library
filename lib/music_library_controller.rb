@@ -12,6 +12,7 @@ class MusicLibraryController
       commands << command
     end
 
+    return if commands.empty?
     primary_command = commands.shift.tr(' ', '_')
     puts MusicLibraryPresenter.__send__(primary_command, @songs, *commands)
   end
